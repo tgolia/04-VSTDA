@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Todo App</title>
+		<title>Title Page</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -18,35 +18,26 @@
 	</head>
 	<body>
 		<div class="container" ng-controller="HomeController as home"> <!-- SHORTCUT: div.container -->
-			<h1 class="text-center">To Do List</h1>
+			<h1 class="text-center">MugManual</h1>
 
 			<div class="panel panel-primary">
 				<div class="panel-heading"> <!-- SHORTCUT: div.panel>div.panel-heading+panel-body -->
-					Add Todo Item
+					What's on your mind?
 				</div>  
 				<div class="panel-body"> <!-- SHORTCUT: div.panel-body -->
-					<textarea name="" ng-model="home.newTodo" id="" cols="30" rows="1" class="form-control" placeholder="Text"></textarea> <!-- SHORTCUT: textarea.form-control -->
-					<select name="select" id="" cols="30" rows="1" class="form-control">
-						<option value="">--- Select Priority ---</option>
-						<option value="blue">Low</option>
-						<option value="yellow">Medium</option>
-						<option value="red">High</option>
-					</select>
+					<textarea name="" ng-model="home.newPost" id="" cols="30" rows="10" class="form-control"></textarea> <!-- SHORTCUT: textarea.form-control -->
 				</div>
-				<div class="panel-footer clearfix"> <!-- SHORTCUT: div.panel-footer --> <!-- clearfix is fix for button not lining up correctly --> 
-					<button class="btn btn-primary pull-left" ng-click="home.addTodo()">Add Todo</button>
+				<div class="panel-footer "> <!-- SHORTCUT: div.panel-footer --> <!-- clearfix is fix for button not lining up correctly --> 
+					<button class="btn btn-primary pull-right" ng-click="home.addPost()" ng-class="home.newPost">Post to MugManual</button> <!-- SHORTCUT: button -->
 				</div>
 			</div>
-			<div class="filters" style="margin-bottom: 70px;">
-				<!--TODO: figure out why the margin doesn't slot todo items naturally below filters-->
-				<!--TODO: if filter is selected, should be a different color. default should be highest priority first-->
-				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 10px 0px 0px 10px">Order by highest priority</button>
-				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 0px">Order by lowest priority</button>
-				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 0px 10px 10px 0px;">Order alphabetically</button>
-			</div>
-			<div class="panel panel-info" ng-repeat="todo in home.todos" style="margin-bottom: 0px;"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
+
+			<div class="panel panel-info" ng-repeat="post in home.posts"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
+				<div class="panel-heading">
+					Here's a post, oo look at this one
+				</div>
 				<div class="panel-body">
-					{{todo}}
+					{{post}}
 				</div>
 			</div>
 		</div>
