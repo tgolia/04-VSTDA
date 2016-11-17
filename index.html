@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="" ng-app="app">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,13 +17,29 @@
 		<![endif]-->
 	</head>
 	<body>
-		<h1 class="text-center">MugManual</h1>
+		<div class="container" ng-controller="HomeController as home"> <!-- SHORTCUT: div.container -->
+			<h1 class="text-center">MugManual</h1>
 
-		<div class="panel">
-			<div class="panel-heading"> <!-- SHORTCUT: div.panel>div.panel-heading+panel-body -->
-				What's on your mind?
-			</div>  
-			<panel-body></panel-body>
+			<div class="panel panel-primary">
+				<div class="panel-heading"> <!-- SHORTCUT: div.panel>div.panel-heading+panel-body -->
+					What's on your mind?
+				</div>  
+				<div class="panel-body"> <!-- SHORTCUT: div.panel-body -->
+					<textarea name="" ng-model="home.newPost" id="" cols="30" rows="10" class="form-control"></textarea> <!-- SHORTCUT: textarea.form-control -->
+				</div>
+				<div class="panel-footer clearfix"> <!-- SHORTCUT: div.panel-footer --> <!-- clearfix is fix for button not lining up correctly --> 
+					<button class="btn btn-primary pull-right" ng-click="home.addPost()">Post to MugManual</button> <!-- SHORTCUT: button -->
+				</div>
+			</div>
+
+			<div class="panel panel-info" ng-repeat="post in home.posts"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
+				<div class="panel-heading">
+					Here's a post, oo look at this one
+				</div>
+				<div class="panel-body">
+					{{post}}
+				</div>
+			</div>
 		</div>
 
 		<!-- jQuery -->
@@ -32,5 +48,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 		<script src="bower_components/angular/angular.js"></script>  <!-- SHORTCUT: script:src -->
+		<script src="app/app.module.js"></script>
+		<script src="app/home/home.controller.js"></script>
 	</body>
 </html>
