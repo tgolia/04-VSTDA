@@ -6,7 +6,8 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = [];
+    Homt
+    eController.$inject = [];
 
     /* @ngInject */
     function HomeController() {
@@ -16,12 +17,11 @@
 
     	vm.addTodo = addTodo;
 
-
     	//////////////// There's a short cut to create a line break like this ('line-break').... might need to add files to Sublime package like I did with John Papa Angular Snippets (video in Resilio)
 
     	function addTodo() {
-    		vm.todos.push(vm.newTodo); // unshift to put at opposite side
-            console.log(vm.newTodo);
+            var copy = angular.copy(vm.newTodo); // angular.copy creates clone (deep copying) of object
+    		vm.todos.push(copy); // unshift to put at opposite side
     	}
     }
 })();

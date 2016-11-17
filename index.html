@@ -25,12 +25,12 @@
 					Add Todo Item
 				</div>  
 				<div class="panel-body"> <!-- SHORTCUT: div.panel-body -->
-					<textarea name="" ng-model="home.newTodo" id="" cols="30" rows="1" class="form-control" placeholder="Text"></textarea> <!-- SHORTCUT: textarea.form-control -->
-					<select name="select" id="" cols="30" rows="1" class="form-control">
-						<option value="">--- Select Priority ---</option>
-						<option value="blue">Low</option>
-						<option value="yellow">Medium</option>
-						<option value="red">High</option>
+					<textarea name="" ng-model="home.newTodo.name" id="" cols="30" rows="1" class="form-control" placeholder="Enter new todo item here"></textarea> <!-- SHORTCUT: textarea.form-control -->
+					<select name="" id="" cols="30" rows="1" class="form-control" ng-model="home.newTodo.priority">
+						<option value="" disabled selected>--- Select Priority ---</option>
+						<option value="panel-heading panel-info">Low</option>
+						<option value="panel-heading panel-warning">Medium</option>
+						<option value="panel-heading panel-danger">High</option>
 					</select>
 				</div>
 				<div class="panel-footer clearfix"> <!-- SHORTCUT: div.panel-footer --> <!-- clearfix is fix for button not lining up correctly --> 
@@ -44,10 +44,9 @@
 				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 0px">Order by lowest priority</button>
 				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 0px 10px 10px 0px;">Order alphabetically</button>
 			</div>
-			<div class="panel panel-info" ng-repeat="todo in home.todos" style="margin-bottom: 0px;"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
-				<div class="panel-body">
-					{{todo}}
-				</div>
+			<div class="panel panel-info" ng-repeat="todo in home.todos" ng-class="todo.priority" style="margin-bottom: 0px;"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
+				<div class="panel-heading panel-info" ng-class="todo.priority">
+					{{todo.name}}
 			</div>
 		</div>
 
