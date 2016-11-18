@@ -28,9 +28,9 @@
 					<textarea name="" ng-model="home.newTodo.name" id="" cols="30" rows="1" class="form-control" placeholder="Enter new todo item here"></textarea> <!-- SHORTCUT: textarea.form-control -->
 					<select name="" id="" cols="30" rows="1" class="form-control" ng-model="home.newTodo.priority">
 						<option value="" disabled selected>--- Select Priority ---</option>
-						<option value="panel-heading panel-info">Low</option>
-						<option value="panel-heading panel-warning">Medium</option>
-						<option value="panel-heading panel-danger">High</option>
+						<option selected='selected' value=3>Low</option>
+						<option value=2>Medium</option>
+						<option value=1>High</option>
 					</select>
 				</div>
 				<div class="panel-footer clearfix"> <!-- SHORTCUT: div.panel-footer --> <!-- clearfix is fix for button not lining up correctly --> 
@@ -40,12 +40,12 @@
 			<div class="filters" style="margin-bottom: 70px;">
 				<!--TODO: figure out why the margin doesn't slot todo items naturally below filters-->
 				<!--TODO: if filter is selected, should be a different color. default should be highest priority first-->
-				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 10px 0px 0px 10px">Order by highest priority</button>
-				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 0px">Order by lowest priority</button>
-				<button class="btn btn-primary pull-left" ng-click="" style="border-radius: 0px 10px 10px 0px;">Order alphabetically</button>
+				<button class="btn btn-primary pull-left" ng-click="sortBy('name')" style="border-radius: 10px 0px 0px 10px">Order alphabetically</button>
+				<button class="btn btn-primary pull-left" ng-click="sortBy('priority')" style="border-radius: 0px">Order by highest priority</button>
+				<button class="btn btn-primary pull-left" ng-click="sortBy('-priority')" border-radius: 0px 10px 10px 0px;">Order by lowest priority</button>
 			</div>
-			<div class="panel panel-info" ng-repeat="todo in home.todos" ng-class="todo.priority" style="margin-bottom: 0px;"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
-				<div class="panel-heading panel-info" ng-class="todo.priority">
+			<div class="panel" ng-repeat="todo in home.todos | orderBy:'-priority'" ng-class="home.getClass(todo)" style="margin-bottom: 0px;"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
+				<div class="panel-heading panel-info"> <!-- TODO: Review how to filter in norma values (i.e. high, medium, low) rather than exact class names -->
 					{{todo.name}}
 			</div>
 		</div>

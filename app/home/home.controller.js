@@ -13,6 +13,16 @@
     function HomeController() {
     	var vm = this;
 
+        var cssMap = {
+            3: 'panel-info',
+            2: 'panel-warning',
+            1: 'panel-danger'
+        };
+
+        vm.getClass = function(todo) {
+            return cssMap[todo.priority];
+        }
+
     	vm.todos = [];
 
     	vm.addTodo = addTodo;
