@@ -6,8 +6,7 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    Homt
-    eController.$inject = [];
+    HomeController.$inject = [];
 
     /* @ngInject */
     function HomeController() {
@@ -24,6 +23,14 @@
         }
 
     	vm.todos = [];
+        vm.orderedList = '';
+
+        var sortArray = ['name','priority','-priority'];
+
+        vm.sortTodos = function(order) {
+            vm.orderedList = sortArray[order];
+        }
+
 
     	vm.addTodo = addTodo;
 
