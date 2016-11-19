@@ -17,7 +17,7 @@
 		<![endif]-->
 	</head>
 	<body>
-		<div class="container" ng-controller="HomeController as home"> <!-- SHORTCUT: div.container -->
+		<div class="container" ng-controller="HomeController as home"> <!-- SHORTCUT: div.container --> <!-- HomeController is the controller we are using, home will be used below to reference -->
 			<h1 class="text-center">To Do List</h1>
 
 			<div class="panel panel-primary">
@@ -27,8 +27,8 @@
 				<div class="panel-body"> <!-- SHORTCUT: div.panel-body -->
 					<input name="" ng-model="home.newTodo.name" id="" cols="30" class="form-control" placeholder="Enter new todo item here"></textarea> <!-- SHORTCUT: textarea.form-control -->
 					<select name="" id="" cols="30" class="form-control" ng-model="home.newTodo.priority">
-						<!-- <option value="" disabled selected>--- Select Priority ---</option>-->
-						<option selected='selected' value=3>Low</option>
+						<option value="" disabled selected>--- Select Priority ---</option>
+						<option value=3>Low</option>
 						<option value=2>Medium</option>
 						<option value=1>High</option>
 					</select>
@@ -44,7 +44,7 @@
 				<button class="btn btn-primary pull-left" ng-click="home.sortTodos(1)" style="border-radius: 0px">Order by highest priority</button>
 				<button class="btn btn-primary pull-left" ng-click="home.sortTodos(2)" style="border-radius: 0px 10px 10px 0px;">Order by lowest priority</button>
 			</div>
-			<div class="panel" ng-repeat="todo in home.todos | orderBy:home.orderedList" ng-class="home.getClass(todo)" style="margin-bottom: 0px;"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
+			<div class="panel" ng-repeat="todo in home.todos | orderBy:home.orderCategory" ng-class="home.getClass(todo)" style="margin-bottom: 0px;"> <!-- SHORTCUT: div.panel.panel-info>div.panel-heading+div.panel-body -->
 				<div class="panel-heading panel-info"> <!-- TODO: Review how to filter in norma values (i.e. high, medium, low) rather than exact class names -->
 					{{todo.name}}
 			</div>
